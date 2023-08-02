@@ -27,6 +27,7 @@ for article in content["articles"][:20]:
 body = body.encode("utf-8")
 send_email(message=body)
 
+# To download any file from web
 """
 url2 = "https://media.licdn.com/dms/image/C4D03AQGo_UjpPJ-Gsg/profile-displayphoto-shrink_800_800/0/1644442954023?e=2147483647&v=beta&t=2dTPjCvQtjHrLeFKmUmTlgJBNufSxJVKJcEGz-neCA0"
 response2 = requests.get(url2)
