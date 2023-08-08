@@ -10,6 +10,7 @@ def scrape(url):
     """Scrape the page source from the URL"""
     response = requests.get(url)
     source = response.text
+    print(source)
     return source
 
 

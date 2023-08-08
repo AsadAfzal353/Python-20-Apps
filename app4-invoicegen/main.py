@@ -3,6 +3,7 @@ from fpdf import FPDF
 import glob
 from pathlib import Path
 
+# Load the filepaths
 filepaths = glob.glob("app4-invoicegen/invoices/*.xlsx")
 
 for filepath in filepaths:
@@ -19,8 +20,6 @@ for filepath in filepaths:
 
     pdf.set_font(family="Times", size=16, style="B")
     pdf.cell(w=50, h=8, txt=f"Date: {date}", ln=1)
-
-    df = pd.read_excel(filepath, sheet_name="Sheet 1")
 
     # Add a header
     columns = list(df.columns)
