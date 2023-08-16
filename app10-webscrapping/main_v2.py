@@ -5,7 +5,8 @@ import time
 import sqlite3
 
 URL = "http://programmer100.pythonanywhere.com/tours/"
-connection = sqlite3.connect("app10-webscrapping/data.db")
+connection = sqlite3.connect("app10-webscrapping/data_fetch.db")
+
 def scrape(url):
     """Scrape the page source from the URL"""
     response = requests.get(url)
@@ -37,19 +38,18 @@ def send_email(message):
 
 
 def store(extracted):
-    row = [item.strip for item in extracted.split(",")]
+    row = [item.strip() for item in extracted.split(",")]
     cursor = connection.cursor()
     cursor.execute("INSERT INTO events VALUES(?,?,?)", row)
     connection.commit()
 
 
 def read(extracted):
-    row = [item.strip for item in extracted.split(",")]
+    row = [item.strip() for item in extracted.split(",")]
     band, city, date = row
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM events WHERE band=? AND city=? AND date=?", (band, city, date))
     rows = cursor.fetchall()
-    print(rows)
     return rows
 
 if __name__ == "__main__":
@@ -63,6 +63,6 @@ if __name__ == "__main__":
             row = read(extracted)
             if not row:
                 store(extracted)
-                send_email(message="Hey, new event was found!")
+                # send_email(message="Hey, new event was found!") # CureMD firewall issue
     
     

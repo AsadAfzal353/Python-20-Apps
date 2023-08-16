@@ -33,7 +33,7 @@ for filepath in filepaths:
     pdf.cell(w=30, h=8, txt=str(columns[4]), border=1, ln=1)    
 
     # Other rows
-    for index, row in df.iterrows():
+    for _, row in df.iterrows():
         pdf.set_font(family="Times", size=10)
         pdf.set_text_color(80, 80, 80)
         pdf.cell(w=30, h=8, txt=str(row["product_id"]), border=1)

@@ -19,7 +19,7 @@ if start:
                     thickness=2, lineType=cv2.LINE_AA)
         cv2.putText(img=frame, text=now.strftime("%H:%M:%S"), org=(30,140),
                     fontFace=cv2.FONT_HERSHEY_PLAIN, fontScale=3, color=(255,0,0),
-                    thickness=2, lineType=cv2.LINE_AA)
+                    thickness=2, lineType=cv2.LINE_8)
         
         key = cv2.waitKey(1)
 

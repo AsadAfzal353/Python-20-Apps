@@ -5,7 +5,7 @@ pdf = FPDF(orientation="P", unit="mm", format="A4")
 pdf.set_auto_page_break(auto=False, margin=0)
 
 df = pd.read_csv("app3-pdftemp/topics.csv")
-for index, row in df.iterrows():
+for _, row in df.iterrows():
     for _ in range(row["Pages"]):
         pdf.add_page()
         pdf.set_font(family="Times", style="B", size=24)

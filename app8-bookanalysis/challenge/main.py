@@ -19,8 +19,6 @@ for filepath in filepaths:
     pos.append(scores["pos"])
     neg.append(scores["neg"])
 
-print(filepaths)
-
 dates = [name.strip(".txt").strip("/app8-bookanalysis/challenge\\") for name in filepaths]
 
 st.title("Diary Tone")
@@ -34,3 +32,5 @@ st.subheader("Negativity")
 neg_figure = px.line(x=dates, y=neg,
                      labels={"x": "Date", "y": "Negativity"})
 st.plotly_chart(neg_figure)
+
+# run via: streamlit run app8-bookanalysis/challenge/main.py

@@ -10,7 +10,6 @@ def scrape(url):
     """Scrape the page source from the URL"""
     response = requests.get(url)
     source = response.text
-    print(source)
     return source
 
 
@@ -57,6 +56,6 @@ if __name__ == "__main__":
 
         if extracted != "No upcoming tours" and extracted not in content:
             store(extracted)
-            send_email(message="Hey, new event was found!")
+            # send_email(message="Hey, new event was found!") # CureMD firewall issue
     
     
