@@ -64,5 +64,3 @@ if __name__ == "__main__":
             if not row:
                 store(extracted)
                 # send_email(message="Hey, new event was found!") # CureMD firewall issue
-    
-    
