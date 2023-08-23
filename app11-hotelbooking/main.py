@@ -1,8 +1,8 @@
 import pandas
 
-df = pandas.read_csv("hotels.csv", dtype={"id": str})
-df_cards = pandas.read_csv("cards.csv", dtype=str).to_dict(orient="records")
-df_cards_security = pandas.read_csv("card_security.csv", dtype=str)
+df = pandas.read_csv("app11-hotelbooking/hotels.csv", dtype={"id": str})
+df_cards = pandas.read_csv("app11-hotelbooking/cards.csv", dtype=str).to_dict(orient="records")
+df_cards_security = pandas.read_csv("app11-hotelbooking/card_security.csv", dtype=str)
 
 class Hotel:
     def __init__(self, hotel_id):
@@ -60,7 +60,6 @@ class SecureCreditCard(CreditCard):
             return False
 
 
-
 print(df)
 hotel_ID = input("Enter the id of the hotel: ")
 hotel = Hotel(hotel_ID)
@@ -68,7 +67,7 @@ hotel = Hotel(hotel_ID)
 if hotel.available():
     credit_card = SecureCreditCard(number="1234567890123456")
     if credit_card.validate(expiration="12/26", holder="JOHN SMITH", cvc="123"):
-        if credit_card.authenticate(given_password="mypass1"):
+        if credit_card.authenticate(given_password="mypass"):
             hotel.book()
             name = input("Enter your name: ")
             reservation_ticket = ReservationTicket(customer_name=name, hotel_object=hotel)

@@ -40,6 +40,13 @@ class MainWindow(QMainWindow):
         search_action.triggered.connect(self.search)
         edit_menu_item.addAction(search_action)
 
+        # Toolbar and its elements
+        toolbar = QToolBar()
+        toolbar.setMovable(True)
+        self.addToolBar(toolbar)
+        toolbar.addAction(add_student_action)
+        toolbar.addAction(search_action)
+
         # Table Header
         self.table = QTableWidget()
         self.table.setColumnCount(4)
@@ -47,12 +54,6 @@ class MainWindow(QMainWindow):
         self.table.verticalHeader().setVisible(False)
         self.setCentralWidget(self.table)
 
-        # Toolbar and its elements
-        toolbar = QToolBar()
-        toolbar.setMovable(True)
-        self.addToolBar(toolbar)
-        toolbar.addAction(add_student_action)
-        toolbar.addAction(search_action)
 
         # Status bar and its elements
         self.statusbar = QStatusBar()
@@ -274,7 +275,7 @@ class SearchDialog(QDialog):
         cursor = connection.cursor()
         result = cursor.execute("SELECT * FROM students WHERE name = ?", (name,))
         rows = list(result)
-        items = main_window.table.findItems(name, Qt.MatchFlag.MatchFixedString)
+        items = main_window.table.findItems(name, Qt.MatchFlag.MatchStartsWith)
         for item in items:
             main_window.table.item(item.row(), 1).setSelected(True)
         
